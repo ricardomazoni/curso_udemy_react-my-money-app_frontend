@@ -129,6 +129,7 @@ class EquipamentoList extends Component {
                         <TableHeaderColumn dataField='observacao'>Observação</TableHeaderColumn>
                         <TableHeaderColumn dataField='action' dataFormat={ this.renderRows } export={ false }>Ações</TableHeaderColumn>
                 </BootstrapTable>
+                
             </div>
         )
     }

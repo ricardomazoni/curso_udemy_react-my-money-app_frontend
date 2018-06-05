@@ -16,3 +16,17 @@ button {
     margin-left: 30px;
     border-color: blue;
 }
+
+.form-group-sm .form-control {
+    margin-left: 380px;
+  
+}
+.input-group-btn {
+    position: absolute;
+    margin-left: 330px;
+    width: 150px;
+}
+/* 
+.react-bs-table-container {
+    height: 600px;
+} */

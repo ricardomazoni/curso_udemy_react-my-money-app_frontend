@@ -18,13 +18,18 @@ const TableHeaderColumn = ReactBsTable.TableHeaderColumn;
  * transformando redux
  */
 
+ function selecLinha(pLinha) {
+     console.log(pLinha)
+     showUpdate(pLinha)
+ }
+
 function onRowSelect(row, isSelected, e, rowIndex) {
     // let rowStr = '';
     // for (const prop in row) {
     //     rowStr += prop + ': "' + row[prop] + '"';
     // }
     // alert(`Selected: ${isSelected}, rowIndex: ${rowIndex}, row: ${rowStr}, array: ` + JSON.stringify(row));
-    console.log(JSON.stringify(row));
+    console.log(row)
     return row
 }
 
@@ -44,11 +49,14 @@ const selectRowProp = {
     mode: 'checkbox',
     clickToSelect: true,
     onSelect: onRowSelect,
-    onSelectAll: onSelectAll
+    onSelectAll: onSelectAll,
+    bgColor: 'gray'
 }
 
 const options = {
-    clearSearch: true
+    clearSearch: true,
+    sizePerPageList: [ 5, 10, 15, 20 ],
+    sizePerPage: 5
   };
 
 class EquipamentoList extends Component {
@@ -60,37 +68,13 @@ class EquipamentoList extends Component {
          */
         this.props.getList()
     }
-    /**
-     * render -> metodo obrigatorio no react
-     */
-    
 
-    // renderRows() {
-    //     const list  = this.props.list || []
-    //     // console.log(list)
-
-    //     return list.map(eq => (
-    //         <tr key = {eq._id}>
-    //             <td>{eq.nr_equip}</td>
-    //             <td>{eq.descricao}</td>
-    //             <td>{eq.observacao}</td>
-    //             <td>
-    //                 <button className='btn btn-warning' onClick={()=> this.props.showUpdate(eq)} >
-    //                     <i className='fa fa-pencil'></i>
-    //                 </button>
-    //                 <button className='btn btn-danger' onClick={()=> this.props.showDelete(eq)} >
-    //                     <i className='fa fa-trash-o'></i>
-    //                 </button>
-    //             </td>
-    //         </tr>
-    //     ))
-    // }
-
-    renderRows() {
+    renderRows(cell, row, parent) {
         return (
             <div>
                 {/* <button className='btn btn-warning' onClick={()=> this.props.showUpdate(selectRowProp.onSelect)} > */}
-                <button className='btn btn-warning' onClick={()=> this.props.showUpdate(onRowSelect)} >
+                {/* this.props.showUpdate(onRowSelect)} > */}
+                <button className='btn btn-warning' onClick={()=> parent.props.showUpdate(row) } >
                     <i className='fa fa-pencil'></i>
                 </button>
                 <button className='btn btn-danger' onClick={()=> this.props.showDelete(selectRowProp.onSelect)} >
@@ -103,31 +87,19 @@ class EquipamentoList extends Component {
     render() {
         return (
             <div>
-                {/* <table className='table'>
-                    <thead>
-                        <tr>
-                            <th>Nr.Equip</th>
-                            <th>Descricao</th>
-                            <th>Observação</th>
-                            <th className='table-actions'>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderRows()}
-                    </tbody>
-                </table> */}
                 <BootstrapTable
                         data={ this.props.list }
-                        pagination
+                        pagination={ true }
                         selectRow={ selectRowProp }
                         search={ true }
-                        options={ this.options }
+                        options={ options }
                         searchPlaceholder='Procure o equipamento especifico'
+                        striped hover condensed
                         isKey>
-                        <TableHeaderColumn dataField='nr_equip' isKey={ true }>Nr.Equip</TableHeaderColumn>
-                        <TableHeaderColumn dataField='descricao'>Descrição</TableHeaderColumn>
-                        <TableHeaderColumn dataField='observacao'>Observação</TableHeaderColumn>
-                        <TableHeaderColumn dataField='action' dataFormat={ this.renderRows } export={ false }>Ações</TableHeaderColumn>
+                        <TableHeaderColumn width='150' dataField='nr_equip' isKey={ true }>Nr.Equip</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='descricao'>Descrição</TableHeaderColumn>
+                        <TableHeaderColumn witdth='400' dataField='observacao'>Observação</TableHeaderColumn>
+                        <TableHeaderColumn width='100' dataField='action' dataFormat={ this.renderRows } formatExtraData={ this } export={ false }>Ações</TableHeaderColumn>
                 </BootstrapTable>
                 
             </div>

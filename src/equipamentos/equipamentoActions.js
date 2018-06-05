@@ -55,6 +55,7 @@ function submit(values, method) {
 }
 
 export function showUpdate(equipamento) {
+    console.log('Chamo showUpdate !!')
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'), 

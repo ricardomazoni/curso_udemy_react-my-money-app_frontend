@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import ContentHeader from '../common/template/contentHeader'
 
-const ReactBsTable = require('react-bootstrap-table');
-const BootstrapTable = ReactBsTable.BootstrapTable;
-const TableHeaderColumn = ReactBsTable.TableHeaderColumn;
+const Select = require('react-switch-button/lib/react-switch-button.js')
+import 'react-switch-button/dist/react-switch-button.css'
+
+const ReactBsTable = require('react-bootstrap-table')
+const BootstrapTable = ReactBsTable.BootstrapTable
+const TableHeaderColumn = ReactBsTable.TableHeaderColumn
+
+// Be sure to include styles at some point, probably during your bootstrapping
 
 const products = [];
 
@@ -35,7 +40,10 @@ class Paginacao extends Component {
                       <TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
                       <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
                       <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-                  </BootstrapTable>                         
+                      <TableHeaderColumn > Teste </TableHeaderColumn>
+                      <Select />
+                  </BootstrapTable>
+                  
                 </div>  
             )
       }

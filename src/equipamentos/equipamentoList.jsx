@@ -18,10 +18,10 @@ const TableHeaderColumn = ReactBsTable.TableHeaderColumn;
  * transformando redux
  */
 
- function selecLinha(pLinha) {
-     console.log(pLinha)
-     showUpdate(pLinha)
- }
+//  function selecLinha(pLinha) {
+//      console.log(pLinha)
+//      showUpdate(pLinha)
+//  }
 
 function onRowSelect(row, isSelected, e, rowIndex) {
     // let rowStr = '';
@@ -29,7 +29,7 @@ function onRowSelect(row, isSelected, e, rowIndex) {
     //     rowStr += prop + ': "' + row[prop] + '"';
     // }
     // alert(`Selected: ${isSelected}, rowIndex: ${rowIndex}, row: ${rowStr}, array: ` + JSON.stringify(row));
-    console.log(row)
+    // console.log(row)
     return row
 }
 
@@ -77,7 +77,7 @@ class EquipamentoList extends Component {
                 <button className='btn btn-warning' onClick={()=> parent.props.showUpdate(row) } >
                     <i className='fa fa-pencil'></i>
                 </button>
-                <button className='btn btn-danger' onClick={()=> this.props.showDelete(selectRowProp.onSelect)} >
+                <button className='btn btn-danger' onClick={()=> parent.props.showDelete(row)} >
                     <i className='fa fa-trash-o'></i>
                 </button>
             </div>    

@@ -64,6 +64,7 @@ export function showUpdate(equipamento) {
 }
 
 export function showDelete(equipamento) {
+    console.log('Chamo showUpdate !!')
     return [
         showTabs('tabDelete'),
         selectTab('tabDelete'), 

@@ -59,6 +59,7 @@ const options = {
     sizePerPage: 5
   };
 
+
 class EquipamentoList extends Component {
 
     componentWillMount() {
@@ -66,7 +67,7 @@ class EquipamentoList extends Component {
          * esse componente trabalha de forma
          * assicrona
          */
-        
+
         this.props.getList()
     }
 

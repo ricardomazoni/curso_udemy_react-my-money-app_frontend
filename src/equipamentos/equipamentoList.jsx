@@ -66,6 +66,7 @@ class EquipamentoList extends Component {
          * esse componente trabalha de forma
          * assicrona
          */
+        
         this.props.getList()
     }
 
